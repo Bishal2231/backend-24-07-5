@@ -1,19 +1,20 @@
 
 import dotenv from 'dotenv'
-import express from 'express'
+// import express from 'express'
 
 import DBCONNECT from './db/db.js'
+import {app} from './app.js'
 
 dotenv.config(
 )
-const app=express();
+// const app=express();
 const port=process.env.PORT||3001
 
 
 DBCONNECT()
 .then(()=>{
     app.listen(port,()=>{
-        console.log(   `server is running on port http://localhost/${port}`)
+        console.log(   `server is running on port http://localhost:${port}`)
     })
     app.on("error",(error)=>{
         console.log("error:",error);
@@ -27,3 +28,11 @@ DBCONNECT()
 console.log("mongo db connetion failed :",err)
 
 })
+
+// routes
+// import router from './routes/user.routes.js';
+
+
+
+
+

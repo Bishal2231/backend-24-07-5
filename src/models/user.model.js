@@ -2,6 +2,9 @@ import mongoose,{Schema, SchemaTypeOptions} from 'mongoose'
 import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
 
+import dotenv from 'dotenv'
+dotenv.config()
+
 
 const userSchema= new Schema({
 
@@ -22,23 +25,23 @@ email:{
   
   
 },
-fullname:{
+fullName:{
     type:String,
     required:true,
 
     lowercase:true,
     index:true
 },
-avater:{
+avatar:{
     type:String,
     required:true,
-    unique:true,
+
     lowercase:true
 },
-coverimage:{
+coverImage:{
     type:String,
  
-    unique:true,
+ 
 
 },
 watchhistory:{
@@ -50,7 +53,7 @@ password:{
     required:[true,"password is required"]
 },
 refreshtoken:{
-    type:string
+    type:String
 }
 
 },{
@@ -62,7 +65,7 @@ userSchema.pre("save", async function (next){
 
     if(!this.isModified("password")){ return next()}
     else{
-    this.password=bcrypt.hash(this.password,10)
+    this.password=await bcrypt.hash(this.password,10)
 
 
 

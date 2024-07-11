@@ -23,7 +23,7 @@ const asynchandler=(requesthandler)=>{
         })
     }
 }
-
+export {asynchandler}
 
 
 // const asynchandler=(requesthandler)=>{(req,res,next)=>{
@@ -37,5 +37,5 @@ const asynchandler=(requesthandler)=>{
 
 
 
-export {asynchandler}
+
 

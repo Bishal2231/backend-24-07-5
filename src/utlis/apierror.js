@@ -30,7 +30,7 @@
 
 
 
-class apierror extends error{
+class apierror extends Error{
 
     constructor(statuscode,message,error=[],stack=""){
         super(message)
